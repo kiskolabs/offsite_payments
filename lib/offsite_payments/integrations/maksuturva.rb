@@ -107,8 +107,7 @@ module OffsitePayments #:nodoc:
 
           fields += [@fields["pmt_buyername"], @fields["pmt_buyeraddress"], @fields["pmt_buyerpostalcode"], @fields["pmt_buyercity"],
           @fields["pmt_buyercountry"], @fields["pmt_deliveryname"], @fields["pmt_deliveryaddress"], @fields["pmt_deliverypostalcode"], @fields["pmt_deliverycity"],
-          @fields["pmt_deliverycountry"], @fields["pmt_sellercosts"]]
-          fields += [@fields["pmt_marketplacecommission"]] unless @fields["pmt_marketplacecommission"].nil?
+          @fields["pmt_deliverycountry"], @fields["pmt_sellercosts"], @fields["pmt_marketplacecommission"]]
 
           (1..@fields["pmt_rows"].to_i).each do |i|
             fields += [@fields["pmt_row_name#{i}"], @fields["pmt_row_desc#{i}"], @fields["pmt_row_quantity#{i}"]]
@@ -215,7 +214,7 @@ module OffsitePayments #:nodoc:
         end
 
         def acknowledge(authcode = nil)
-          return_authcode = [params["pmt_action"], params["pmt_version"], params["pmt_id"], params["pmt_reference"], params["pmt_amount"], params["pmt_currency"], params["pmt_sellercosts"], params["pmt_paymentmethod"], params["pmt_escrow"], authcode].join("&")
+          return_authcode = [params["pmt_action"], params["pmt_version"], params["pmt_id"], params["pmt_reference"], params["pmt_amount"], params["pmt_currency"], params["pmt_sellercosts"], params["pmt_marketplacecommission"], params["pmt_paymentmethod"], params["pmt_escrow"], authcode].join("&")
           (Digest::MD5.hexdigest(return_authcode + "&").upcase == params["pmt_hash"])
         end
 
