@@ -105,7 +105,6 @@ module OffsitePayments #:nodoc:
           fields += [@fields["pmt_paymentmethod"]] unless @fields["pmt_paymentmethod"].nil?
           fields += [@fields["pmt_buyeridentificationcode"]] unless @fields["pmt_buyeridentificationcode"].nil?
           fields += [@fields["pmt_marketplacecommission"]] unless @fields["pmt_marketplacecommission"].nil?
-          fields += [@fields["pmt_marketplacereference"]] unless @fields["pmt_marketplacereference"].nil?
 
 
           fields += [@fields["pmt_buyername"], @fields["pmt_buyeraddress"], @fields["pmt_buyerpostalcode"], @fields["pmt_buyercity"],
@@ -136,7 +135,6 @@ module OffsitePayments #:nodoc:
         mapping :pmt_paymentmethod, "pmt_paymentmethod"
         mapping :pmt_buyeridentificationcode, "pmt_buyeridentificationcode"
         mapping :pmt_marketplacecommission, "pmt_marketplacecommission"
-        mapping :pmt_marketplacereference, "pmt_marketplacereference"
         mapping :pmt_buyername, "pmt_buyername"
 
         mapping :account, ''
